@@ -1,0 +1,53 @@
+body {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+}
+
+body .tree-container {
+    overflow-y: auto;
+    height: 100%;
+}
+
+body .tree-view {
+    overflow-y: visible;
+    width: 100%;
+    height: 100%;
+}
+
+body .tree-view span {
+    cursor: pointer;
+}
+
+body .tree-view_item:hover {
+    background-color: #4CAF50;
+}
+
+body .tree-view .selected + span {
+    background: #F44336;
+    color: white;
+}
+
+.app {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 30px;
+        width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.app .header {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    padding: 5px;
+    border-bottom: solid 1px #ededed;
+}

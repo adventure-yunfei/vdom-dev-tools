@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf8">
+    <title>Plain Shell</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      #target {
+        flex: 1;
+        border: none;
+        border-bottom: 1px solid #ccc;
+      }
+      #dev-tool-container {
+        display: flex;
+        height: 400px;
+        overflow: hidden;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe id="target" name="target" src="http://local.kujiale.com:7000/instdeco/?obsdesignid=3FO4FSGOU67U"></iframe>
+    <div id="dev-tool-container">
+      <div id="app"></div>
+    </div>
+    <script src="build/devtools.js"></script>
+  </body>
+</html>
