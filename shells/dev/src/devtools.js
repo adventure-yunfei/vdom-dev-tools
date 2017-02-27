@@ -39,7 +39,6 @@ initDevTool(bridge);
 //   })
 // }
 
-
 function inject (url) {
   /* global XMLHttpRequest */
   const xhr = new XMLHttpRequest()
