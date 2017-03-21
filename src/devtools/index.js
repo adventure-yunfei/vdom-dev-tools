@@ -11,6 +11,17 @@ function scrollIntoView (node) {
   container.scrollTop = node.offsetTop;
 }
 
+function injectGlobal (id) {
+  if (window.chrome && window.chrome.devtools) {
+    window.chrome.devtools.inspectedWindow.eval(
+      `window.$v = __VNODE_STORE__['${id}']`,
+      function (result, isException) {
+        //
+      }
+    );
+  }
+}
+
 export default function initDevTool (bridge) {
   function walk (node, fn) {
     const isDone = fn(node) === false
@@ -59,6 +70,7 @@ export default function initDevTool (bridge) {
         bridge.send('select', {
           id: this.props.id
         })
+        injectGlobal(this.props.id);
       }
     }
 
@@ -116,6 +128,7 @@ export default function initDevTool (bridge) {
 
       bridge.on('select', ({selectedId}) => {
         this.setState({selectedId})
+        injectGlobal(selectedId);
       })
 
       bridge.on('toggle-inspect', ({isInspecting}) => {
@@ -160,7 +173,7 @@ export default function initDevTool (bridge) {
               <input type='checkbox' checked={!!this.state.isInspecting} onChange={() => { this.toggleInspect() }} />
             </label>
           </div>
-          <div className='props-info'>{selectedNode.type}:{selectedNode.id}</div>
+          <div className='props-info'>$v: {selectedNode.type}:{selectedNode.id}</div>
           <div className='tree-container'>{innerTree}</div>
         </div>
       )
